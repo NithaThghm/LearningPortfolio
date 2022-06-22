@@ -1,63 +1,87 @@
 *{
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 
+:root{
+    --quarterWidth: calc(100vw / 4);
+    --marginCtn: 10px;
+    --mainCtnDim: calc(100% - (2 * var(--marginCtn)));
+    --headerFooterHeight: 50px;
+    --contentHeight: calc(100% - (2 * var(--headerFooterHeight)));
+}
+
+
 body{
+    display: flex; /* Je modifie la valeur du display en flex pour appliquer les margins verticaux*/
     height: 100vh;
     width: 100vw;
 }
 
+header{
+    display: flex;
+    align-items: center;
+    height: var(--headerFooterHeight);
+}
+
+main{
+    position: relative;
+    height: var(--contentHeight);
+    width: 100%;
+}
+
+footer{
+    height: 50px;
+    width: 100%;
+}
+
 h1{
     text-align: center;
-}
-
-.burgerBtn{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 50px;
-    width: 50px;
-    outline: solid 1px black;
-}
-
-.burgerBar{
-    display: block;
-    height: 10px;
     width: 100%;
-    background-color: black;
 }
 
 .mainCtn{
+    height: var(--mainCtnDim);
+    width: var(--mainCtnDim);
+    margin: auto;
+    background: lightsteelblue;
+}
+
+.menuSlider{
+    position: absolute;
     height: 100%;
     width: 100%;
-    background-color: beige;
+    background: rgba(0, 0, 0, 0.5);
+    /* outline: solid 1px black; */
+    transform: translateX(-100vw);
+    transition: 500ms ease-in-out;
+    
 }
 
-.navBarul{
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
+.menuElmt{
+    color : #ffff;
+    text-decoration : none;
 }
 
-.navBarEl{
-    width: 150px;
-    outline: solid 1px black;
-    padding: 10px 5px;
-    border-radius: 15px;
-    text-align: center;
+.menuBtn{
+    width: 60px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 14px;
     text-transform: uppercase;
-    background-image: linear-gradient(to right, #16222A 0%, #3A6073  51%, #16222A  100%);
-    color: white; 
+    background: none;
+    border: solid 1px black;
+    padding: 5px;
+    cursor: pointer;
 }
 
-.navBarEl a{
-    color: white; 
+.content{
+    height: 100%;
+    width: 100%;
 }
 
          
-.btn-grad {
-    
+/* .btn-grad {
     margin: 10px;
     padding: 15px 45px;
     text-align: center;
@@ -70,9 +94,31 @@ h1{
     display: block;
   }
 
-  .btn-grad:hover {
-    background-position: right center; /* change the direction of the change here */
+.btn-grad:hover {
+    background-position: right center; //change the direction of the change here 
     color: #fff;
     text-decoration: none;
-  }
- 
+} */
+
+/* ....|  Gestion du responsive */
+
+    /* La barre de scroll fausse la valeur à prendre en compte pour les pointbreaks depuis la console de debug, il ajouter 17px de plus (ex: breakpoint vu à 720px, paramétrer à 737px) */
+    @media screen and (min-width: 737px){
+
+
+    }
+
+    @media screen and (min-width: 981px){
+
+       
+
+}
+
+    @media screen and (min-width: 1281px){
+
+        .menuSlider{
+            width: var(--quarterWidth);
+        }
+
+    }
+  
