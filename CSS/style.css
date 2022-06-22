@@ -80,6 +80,20 @@ h1{
     width: 100%;
 }
 
+.fsImg{
+    position: absolute;
+    display: none;
+    height: 30px;
+    width: 30px;
+    right: 0;
+    top: 0;
+    padding : 10px;
+}
+
+.fsImg:hover{
+    transform: scale(1.2);
+}
+
          
 /* .btn-grad {
     margin: 10px;
@@ -118,6 +132,10 @@ h1{
 
         .menuSlider{
             width: var(--quarterWidth);
+        }
+
+        .fsImg{
+            display: block;
         }
 
     }
