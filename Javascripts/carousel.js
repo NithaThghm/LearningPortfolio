@@ -5,11 +5,6 @@ const carouselCtn = document.querySelector(".carouselCtn");
 console.log(carouselCtn);
 
 
-
-
-
-
-
 /* .... SWITCH */
 
 const checkbox = document.querySelector("button");
@@ -99,3 +94,36 @@ function changeImg(element){
         }
 
 }
+
+//Faire glisser l'image vers la gauche au slide tactile
+
+const carouselImgCtn = document.querySelector('.carouselImgCtn')
+const carouselSlideToLeft = document.querySelector('.carouselSlideToLeft')
+let xZero
+let xPos
+let xDec
+const xLimit = 50
+
+carouselImgCtn.addEventListener('touchstart',(e) =>{
+    e.preventDefault()
+    xZero = e.targetTouches[0].clientX
+    console.log("xZero : "+xZero)
+})
+
+carouselImgCtn.addEventListener('touchmove',(e) =>{
+    e.preventDefault()
+    xPos = e.targetTouches[0].clientX
+    console.log("xPos : "+xPos)
+    xDec = xZero - xPos
+    console.log("xDec : "+xDec)
+    if(xPos<xZero){
+        carouselSlideToLeft.style.transform = 'translateX(-'+xDec+'px)'
+    }else if(xDec >= xLimit){
+        carouselSlideToLeft.style.transform = 'translateX(100%)'
+    }
+})
+
+
+
+
+

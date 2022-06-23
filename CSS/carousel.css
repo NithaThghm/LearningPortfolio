@@ -1,29 +1,52 @@
 /* .... CONTENEUR D'IMAGES DU CAROUSEL */
 
-  .carousel{
+  .carouselCtn{
     position: relative;
     margin: auto;
-    height: 80%;
-    width: fit-content;
+    height: 100%;
+    width: 100%;
     outline: solid 1px black;
   }
 
-  .carouselCtn{
-    height: 60%;
-    width: 1350px;
+  .carouselOptCtn{
+    display: flex;
+    height: 10%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    /* outline: solid 1px black; */
+  }
+
+  .carouselAutoplayBtn{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: solid 1px black;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .carouselImgCtn{
+    position: relative;
+    display: flex;
+    width: 100%;
+    /* overflow-x: hidden; */
     margin: auto;
+    outline: solid 1px black;
   }
 
   .carouselImg{
-    position: absolute;
     display: block;
     height : 300px;
+    min-width: 100%;
     border-radius: 20px;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    object-fit: cover;
+  }
+
+  .carouselSlideToLeft{
+    transform: translateX();
+    transition: 500ms ease-in-out;
   }
 
   .carouselBtn{
@@ -46,11 +69,9 @@
     transform: translateX(200%);
   }
 
-  .carouselNav{
-    position: absolute;
-    bottom: 0;
+  .carouselTrackerCtn{
     display: flex;
-    height: 45px;
+    height: 5%;
     width: 100%;
     justify-content: space-around;
     align-items: center;
@@ -69,8 +90,7 @@
 
   /* .... SWITCH */
 
-.checkbox {
-    position: absolute;
+.carouselAnimBtn{
     width: 52px;
     height: 32px;
     padding: 4px;
@@ -83,7 +103,7 @@
     cursor: pointer;
   }
   
-  .checkbox::before {
+  .carouselAnimBtn::before {
     content: "";
     display: inline-block;
     width: 16px;
@@ -92,11 +112,11 @@
     background-color: #938f99;
     transition: width 200ms, height 200ms, transform 200ms, background-color 200ms;
   }
-  .checkbox.on {
+  .carouselAnimBtn.on {
     border-color: #d0bcff;
     background-color: #d0bcff;
   }
-  .checkbox.on::before {
+  .carouselAnimBtn.on::before {
     background-color: #381e72;
     width: 24px;
     height: 24px;
@@ -137,4 +157,28 @@
         transform: translate(-100%);
     }
  }
+
+ /* ....|  Gestion du responsive */
+
+    /* La barre de scroll fausse la valeur à prendre en compte pour les pointbreaks depuis la console de debug, il ajouter 17px de plus (ex: breakpoint vu à 720px, paramétrer à 737px) */
+    @media screen and (min-width: 737px){
+
+
+    }
+
+    @media screen and (min-width: 981px){
+
+       
+
+}
+
+    @media screen and (min-width: 1281px){
+
+      .carouselImg{
+        height : auto;
+        width:  auto;
+        object-fit: none;
+      }
+
+    }
 

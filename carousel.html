@@ -31,35 +31,42 @@
             </nav>
 
             <div class="content">
-                <h2>Carousel</h2>
-                <p></p>
-                <div class="carousel">
-                    <button class="checkbox" role="switch" aria-checked="true"></button>
+                <div class="carouselCtn">
+                    <h2>Carousel</h2>
+                    <div class="carouselOptCtn">
+                        <label for="AutoplayBtn">Autoplay :</label>
+                        <buton class="carouselAutoplayBtn" name="autoplayBtn" value="Autoplay">▷</buton>
+                        <label for="AnimationBtn">Animation :</label>
+                        <button class="carouselAnimBtn" role="switch" aria-checked="true" name="animationBtn"></button>    
+                    </div>
             
-            
-                    <button class="carouselBtn carouselBtnLeft">
+                    <!-- <button class="carouselBtn carouselBtnLeft">
                         <img id="carousselLeft" class="" src="./Assets/Carousel/left.svg" alt="Boutton gauche" onclick="changeImg(this)">
-                    </button>
+                    </button> -->
             
-                    <div class="carouselCtn">
-                       <img id="carousselImg1" class="carouselImg" src="./Assets/Carousel/img1.jpg" alt="image du Caroussel">
-                         <img id="carousselImg2" class="carouselImg" src="./Assets/Carousel/img2.jpg" alt="image du Caroussel">
-                        <img id="carousselImg3" class="carouselImg" src="./Assets/Carousel/img3.jpg" alt="image du Caroussel">
+                    <div class="carouselImgCtn carouselSlideToLeft">
+                        <img id="carousselImg1" class="carouselImg carouselImg1" src="./Assets/Carousel/img1.jpg" alt="image du Caroussel">
+                        <img id="carousselImg2" class="carouselImg carouselImg2" src="./Assets/Carousel/img2.jpg" alt="image du Caroussel">
+                        <img id="carousselImg3" class="carouselImg carouselImg3" src="./Assets/Carousel/img3.jpg" alt="image du Caroussel">
                     </div>
+
+                    <div class="carouselTrackerCtn">
+                        <button id="pointImg1" class="carouselNavIndicator red"></button>
+                        <button id="pointImg1" class="carouselNavIndicator red"></button>
+                        <button id="pointImg1" class="carouselNavIndicator red"></button>
+                    </div>
+
+
             
-                    <button class="carouselBtn carouselBtnRight">
+                    <!-- <button class="carouselBtn carouselBtnRight">
                         <img id="carousselLeft" class="" src="./Assets/Carousel/right.svg" onclick="changeImg(this)">
-                    </button>
+                    </button> -->
             
-                    <div class="carouselNav">
-                        <button id="pointImg1" class="carouselNavIndicator red"></button>
-                        <button id="pointImg1" class="carouselNavIndicator red"></button>
-                        <button id="pointImg1" class="carouselNavIndicator red"></button>
-                    </div>
+                    
             
                 </div>
             </div>
-            <img class="fsImg" src="./Assets/fullscreen.svg" alt="fullscreen button">
+            <img class="fsImg" src="./Assets/Buttons/fullscreen.svg" alt="fullscreen button">
         </main>
 
         <footer>
