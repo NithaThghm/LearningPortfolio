@@ -1,3 +1,7 @@
+h2{
+  height: 5%;
+}
+
 /* .... CONTENEUR D'IMAGES DU CAROUSEL */
 
   .carouselCtn{
@@ -27,26 +31,42 @@
     vertical-align: middle;
   }
 
+  .sliderCtn{
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    width: 100%;
+    justify-content: center;
+    overflow-x: hidden;
+    outline: solid 1px yellow;
+  }
+
   .carouselImgCtn{
     position: relative;
     display: flex;
-    width: 100%;
-    /* overflow-x: hidden; */
-    margin: auto;
+    width: fit-content;
     outline: solid 1px black;
   }
 
   .carouselImg{
     display: block;
     height : 300px;
-    min-width: 100%;
+    max-width: 355px;
     border-radius: 20px;
     object-fit: cover;
   }
 
   .carouselSlideToLeft{
-    transform: translateX();
-    transition: 500ms ease-in-out;
+    transform: translateX(0);
+    transition: transform .5s ease-out;
+  }
+
+  .carouselTrackerCtn{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    outline: solid 1px blue;
   }
 
   .carouselBtn{
@@ -69,22 +89,24 @@
     transform: translateX(200%);
   }
 
-  .carouselTrackerCtn{
-    display: flex;
-    height: 5%;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
-  }
-
-  .carouselNavIndicator{
-    height: 20px;
-    width: 20px;
+  .carouselTracker{
+    position: relative;
+    height: 10px;
+    width: 10px;
     border: none;
     border-radius: 50%;
     background: gray;
     cursor: pointer;
+    margin: 15px;
+  }
+
+  .carouselTrackerActive{
+    position: absolute;
+    left: 118px;
+    transform: scale(1) translateX(0);
+    transition: 500ms ease-in-out;
+    background-color: #26474E;
+    z-index: 1;
   }
 
 

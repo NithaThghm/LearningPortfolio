@@ -95,33 +95,85 @@ function changeImg(element){
 
 }
 
-//Faire glisser l'image vers la gauche au slide tactile
+// .... Paramétrer le défilement automatique du carousel
+
+
+
+// .... Paramétrer le glissement tactile de l'image vers la gauche
 
 const carouselImgCtn = document.querySelector('.carouselImgCtn')
 const carouselSlideToLeft = document.querySelector('.carouselSlideToLeft')
+const carouselTrackerActive = document.querySelector('.carouselTrackerActive')
+
 let xZero
 let xPos
 let xDec
-const xLimit = 50
+let xDir
+let i = 0;
 
-carouselImgCtn.addEventListener('touchstart',(e) =>{
-    e.preventDefault()
-    xZero = e.targetTouches[0].clientX
-    console.log("xZero : "+xZero)
-})
+    //1_ Récupérer la position de départ
 
-carouselImgCtn.addEventListener('touchmove',(e) =>{
-    e.preventDefault()
-    xPos = e.targetTouches[0].clientX
-    console.log("xPos : "+xPos)
-    xDec = xZero - xPos
-    console.log("xDec : "+xDec)
-    if(xPos<xZero){
-        carouselSlideToLeft.style.transform = 'translateX(-'+xDec+'px)'
-    }else if(xDec >= xLimit){
-        carouselSlideToLeft.style.transform = 'translateX(100%)'
+    carouselImgCtn.addEventListener('touchstart',(e) =>{
+        e.preventDefault()
+        xZero = e.changedTouches[0].clientX
+    })
+
+    //2_ Récupérer la dernière position
+
+    carouselImgCtn.addEventListener('touchend',(e) =>{
+        e.preventDefault()
+        xPos = e.changedTouches[0].clientX
+        xDec = xPos - xZero
+        xDir = Math.sign(xDec)
+    
+        if(xPos<xZero){
+            moveLeft()
+        }
+        else{
+            moveRight()
+        }
+    })
+
+    //3_ Déplacer l'image à gauche et déplacer le point tracker à gauche
+
+    function moveLeft(){
+        
+        if(i<2){
+            console.log("Swipe Left")
+            console.log(0)
+            console.log(0-355*i)
+            i++
+            carouselSlideToLeft.style.transform = 'translateX(-'+355*i+'px)'
+            carouselTrackerActive.style.transform ='scale(1) translateX('+40*i+'px)'
+        }
+        else{
+            console.log('finish')
+        }
+        console.log(i)
     }
-})
+
+    //4_ Déplacer l'image à droite
+
+    function moveRight(){
+        if(i>=1){
+            console.log("Swipe Right")
+            i-- 
+            console.log(i)
+            carouselSlideToLeft.style.transform = 'translateX(-'+355*i+'px)'
+            carouselTrackerActive.style.transform = 'scale(1) translateX('+40*i+'px)'
+        }
+        else{
+            console.log('swipe right finish')
+        }
+        console.log(i)
+    }
+
+
+    
+
+
+
+
 
 
 
