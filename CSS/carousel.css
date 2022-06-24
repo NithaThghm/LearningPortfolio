@@ -49,14 +49,13 @@ h2{
   .carouselImg{
     display: block;
     height : 300px;
-    max-width: var(--mainCtnDim);
+    max-width: calc(100vw - 2 * var(--marginCtn));
     border-radius: 20px;
-    /* object-fit: cover; */
+    object-fit: cover;
     flex-shrink: 0;
   }
 
   .carouselSlideToLeft{
-    transform: translateX(0);
     transition: transform .5s ease-out;
   }
 
@@ -99,12 +98,9 @@ h2{
   }
 
   .carouselTrackerActive{
-    position: absolute;
-    left: 118px;
-    transform: scale(1) translateX(0);
-    transition: 500ms ease-in-out;
+    transform: scale(1.5);
+    transition: 200ms ease-in-out;
     background-color: #26474E;
-    z-index: 1;
   }
 
 

@@ -90,13 +90,15 @@ function changeImg(element){
 
 }
 
-// .... Paramétrer le défilement automatique du carousel
+// .... Paramétrer le défilement automatique du carousel avec un tracker d'image
 
 
 
 // .... Paramétrer le glissement tactile de l'image vers la gauche
 
 const carouselImgCtn = document.querySelector('.carouselImgCtn')
+const carouselTrackerCtn = document.querySelector('.carouselTrackerCtn')
+const carouselTrackerCtnChilds = carouselTrackerCtn.children
 const carouselSlideToLeft = document.querySelector('.carouselSlideToLeft')
 const carouselTrackerActive = document.querySelector('.carouselTrackerActive')
 
@@ -122,20 +124,23 @@ let i = 0;
         xDir = Math.sign(xDec)
     
         if(xPos<xZero){
+            moveTracker()
             moveLeft()
+            moveTracker()
         }
         else{
+            moveTracker()
             moveRight()
+            moveTracker()
         }
     })
 
-    //3_ Déplacer l'image à gauche et déplacer le point tracker à gauche
+    //3_ Déplacer l'image à gauche
 
     function moveLeft(){
         if(i<2){
             i++
-            carouselSlideToLeft.style.transform = 'translateX(-'+355*i+'px)'
-            carouselTrackerActive.style.transform ='scale(1) translateX('+40*i+'px)'
+            carouselSlideToLeft.style.transform = 'translateX(calc((100vw - 2 * var(--marginCtn))*'+i+'*(-1)))'
         }
         else{}
     }
@@ -145,10 +150,15 @@ let i = 0;
     function moveRight(){
         if(i>=1){
             i-- 
-            carouselSlideToLeft.style.transform = 'translateX(-'+355*i+'px)'
-            carouselTrackerActive.style.transform = 'scale(1) translateX('+40*i+'px)'
+            carouselSlideToLeft.style.transform = 'translateX(calc((100vw - 2 * var(--marginCtn))*'+i+'*(-1)))'
         }
         else{}
+    }
+
+    //5_ Déplacer le tracker d'image
+
+    function moveTracker(){
+        carouselTrackerCtnChilds[i].classList.toggle('carouselTrackerActive')
     }
 
 
