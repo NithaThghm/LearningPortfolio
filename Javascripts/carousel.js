@@ -2,8 +2,6 @@
 
 const carouselCtn = document.querySelector(".carouselCtn");
 
-console.log(carouselCtn);
-
 
 /* .... SWITCH */
 
@@ -38,12 +36,10 @@ function changeImg(element){
     let pointImg1 = document.getElementById("pointImg1");
     let pointImg2 = document.getElementById("pointImg2");
     let pointImg3 = document.getElementById("pointImg3");
-    console.log(carousselImg1.src);
     let array = [window.getComputedStyle(carousselImg1).display, window.getComputedStyle(carousselImg2).display,window.getComputedStyle(carousselImg3).display]
 
         console.log(array);
         if(element.id == "carousselLeft"){
-            console.log(element.id);
             carousselImg1.classList.toggle("moveLeft");
             // for (const img of array){
             //     if(img == "block"){
@@ -69,7 +65,6 @@ function changeImg(element){
         }
 
         else{
-            console.log(element.id);
             for (const img of array){
                 if(img == "block"){
                     if(array.indexOf(img) == 2){
@@ -137,35 +132,23 @@ let i = 0;
     //3_ Déplacer l'image à gauche et déplacer le point tracker à gauche
 
     function moveLeft(){
-        
         if(i<2){
-            console.log("Swipe Left")
-            console.log(0)
-            console.log(0-355*i)
             i++
             carouselSlideToLeft.style.transform = 'translateX(-'+355*i+'px)'
             carouselTrackerActive.style.transform ='scale(1) translateX('+40*i+'px)'
         }
-        else{
-            console.log('finish')
-        }
-        console.log(i)
+        else{}
     }
 
     //4_ Déplacer l'image à droite
 
     function moveRight(){
         if(i>=1){
-            console.log("Swipe Right")
             i-- 
-            console.log(i)
             carouselSlideToLeft.style.transform = 'translateX(-'+355*i+'px)'
             carouselTrackerActive.style.transform = 'scale(1) translateX('+40*i+'px)'
         }
-        else{
-            console.log('swipe right finish')
-        }
-        console.log(i)
+        else{}
     }
 
 

@@ -9,7 +9,6 @@ h2{
     margin: auto;
     height: 100%;
     width: 100%;
-    outline: solid 1px black;
   }
 
   .carouselOptCtn{
@@ -38,22 +37,22 @@ h2{
     width: 100%;
     justify-content: center;
     overflow-x: hidden;
-    outline: solid 1px yellow;
   }
 
   .carouselImgCtn{
     position: relative;
     display: flex;
-    width: fit-content;
-    outline: solid 1px black;
+    flex-shrink: 0;
+    min-width: 100%;
   }
 
   .carouselImg{
     display: block;
     height : 300px;
-    max-width: 355px;
+    max-width: var(--mainCtnDim);
     border-radius: 20px;
-    object-fit: cover;
+    /* object-fit: cover; */
+    flex-shrink: 0;
   }
 
   .carouselSlideToLeft{
@@ -66,7 +65,6 @@ h2{
     width: 100%;
     align-items: center;
     justify-content: center;
-    outline: solid 1px blue;
   }
 
   .carouselBtn{
