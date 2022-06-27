@@ -36,10 +36,10 @@ footer{
     height: 50px;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-h1, h2{
+h1{
     text-align: center;
     width: 100%;
 }
@@ -64,10 +64,10 @@ h1, h2{
 
 .menuElmt{
     display: inline-block;
-    font-size: 25px;
+    font-size: 20px;
     color : #ffff;
     text-decoration : none;
-    margin: 5%;
+    margin: 3%;
 }
 
 .menuBtn{
@@ -98,6 +98,18 @@ h1, h2{
 
 .fsImg:hover{
     transform: scale(1.2);
+}
+
+.footerLogos{
+    display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footerLogo{
+    height: 32px;
+    width: 32px;
 }
 
          

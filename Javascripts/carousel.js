@@ -1,6 +1,7 @@
 //mettre les images côte à côte
 
 const carouselCtn = document.querySelector(".carouselCtn");
+const carouselImgCtn = document.querySelector('.carouselImgCtn')
 
 
 /* .... SWITCH */
@@ -17,7 +18,38 @@ checkbox.addEventListener("click", (event) => {
 });
 
 
-/* .... FONCTION POUR CREER L'ARRAY AVEC LES IMAGES DU DOSSIER CAROUSEL */
+// .... Paramétrer un défilement infini au glissement, ou clic, vers la droite ou la gauche */
+
+const arrayImg = Array.from(carouselImgCtn.children)
+//const imgWidth = currentImg.getBoundingClientRect();   //Retourne zéro, étudier pourquoi
+
+    //1. Aligner les images les une à côtés des autres au démarrage
+    const alignerImg = (image, index) => {
+        if(index === arrayImg.length-1){
+            image.style.left = '-355px';
+        }else{
+            image.style.left = 355 * index + 'px';
+        }
+    };
+    arrayImg.forEach(alignerImg);
+
+    //2. Réaligner les images au clic ou au glissement tactile
+    function reorganiserImg(){
+        //2.1. Récupérer l'index de l'image affichée
+        let currentImg
+        arrayImg.forEach(image =>
+            image.classList.forEach(el => {
+                if(el === 'currentImg'){
+                    currentImg = arrayImg.indexOf(image);
+                }
+            })
+        )
+        //2.2. Donner une valeur de 'Left' en fonction de l'index de l'image affichée
+        arrayImg[currentImg-1].style.left = '-355px'
+        arrayImg[currentImg].style.left = '0px'
+        arrayImg[currentImg+1].style.left = 355 * currentImg + 'px'
+
+    }
 
 
 
@@ -96,7 +128,7 @@ function changeImg(element){
 
 // .... Paramétrer le glissement tactile de l'image vers la gauche
 
-const carouselImgCtn = document.querySelector('.carouselImgCtn')
+
 const carouselTrackerCtn = document.querySelector('.carouselTrackerCtn')
 const carouselTrackerCtnChilds = carouselTrackerCtn.children
 const carouselSlideToLeft = document.querySelector('.carouselSlideToLeft')
