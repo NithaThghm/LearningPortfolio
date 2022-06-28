@@ -1,8 +1,19 @@
-//mettre les images côte à côte
-
+//.... Déclarer les variables utiles à tout le script
 const carouselCtn = document.querySelector(".carouselCtn");
 const carouselImgCtn = document.querySelector('.carouselImgCtn')
+const carouselLeft = document.getElementById('carouselLeft');
+const carouselRight = document.getElementById('carouselRight');
+const testAnim = 1;
 
+const carouselTrackerCtn = document.querySelector('.carouselTrackerCtn')
+const carouselTrackerCtnChilds = carouselTrackerCtn.children
+const carouselSlideToLeft = document.querySelector('.carouselSlideToLeft')
+const carouselTrackerActive = document.querySelector('.carouselTrackerActive')
+
+const arrayTracker = Array.from(carouselTrackerCtn.children)
+
+let currentImg
+let x
 
 /* .... SWITCH */
 
@@ -21,11 +32,12 @@ checkbox.addEventListener("click", (event) => {
 // .... Paramétrer un défilement infini au glissement, ou clic, vers la droite ou la gauche */
 
 const arrayImg = Array.from(carouselImgCtn.children)
+const arrayImgLength = arrayImg.length;
 //const imgWidth = currentImg.getBoundingClientRect();   //Retourne zéro, étudier pourquoi
 
     //1. Aligner les images les une à côtés des autres au démarrage
     const alignerImg = (image, index) => {
-        if(index === arrayImg.length-1){
+        if(index === arrayImgLength-1){
             image.style.left = '-355px';
         }else{
             image.style.left = 355 * index + 'px';
@@ -33,10 +45,9 @@ const arrayImg = Array.from(carouselImgCtn.children)
     };
     arrayImg.forEach(alignerImg);
 
-    //2. Réaligner les images au clic ou au glissement tactile
+    //2. Réaligner les images au clic ou au glissement tactile pour créer un défilement infini
     function reorganiserImg(){
-        //2.1. Récupérer l'index de l'image affichée
-        let currentImg
+        //2.1. Récupérer l'index de l'image affichée et supprimer la classe currentImg
         arrayImg.forEach(image =>
             image.classList.forEach(el => {
                 if(el === 'currentImg'){
@@ -44,20 +55,60 @@ const arrayImg = Array.from(carouselImgCtn.children)
                 }
             })
         )
-        //2.2. Donner une valeur de 'Left' en fonction de l'index de l'image affichée
-        arrayImg[currentImg-1].style.left = '-355px'
-        arrayImg[currentImg].style.left = '0px'
-        arrayImg[currentImg+1].style.left = 355 * currentImg + 'px'
+        console.log('currentImg : '+currentImg)
 
+        //2.2. Donner une valeur de 'Left' en fonction de l'index de l'image affichée
+        for(i=0;i<=arrayImgLength-1;i++){
+            let x
+            console.log('i: '+i);
+            console.log('currentImg + i : '+parseInt(currentImg+i))
+            if(currentImg+i>arrayImgLength-1){
+                x = currentImg+i-arrayImgLength
+            }else{
+                x = currentImg+i
+            }
+            console.log('x: ' + x)
+            arrayImg[x].style.left = -355+355*i+'px'
+                console.log(-355+355*i+'px')
+            x++
+        }
+
+        //2.3. Supprimer et ajouter la classe 'currentImg' aux bonnes images
+        arrayImg[currentImg].classList.remove('currentImg')
+        if(currentImg+1>arrayImgLength-1){
+            arrayImg[0].classList.add('currentImg');
+        }else{
+            arrayImg[currentImg+1].classList.add('currentImg');
+        }
+
+        //2.3 Supprimer et ajouter la classe 'carouselTrackerActive' aux bons tracker
+        arrayTracker[currentImg].classList.remove('carouselTrackerActive')
+        if(currentImg+1>arrayImgLength-1){
+            arrayTracker[0].classList.add('carouselTrackerActive');
+        }else{
+            arrayTracker[currentImg+1].classList.add('carouselTrackerActive');
+        }
     }
+
+   
+
+
+
+    //3. Test
+    carouselLeft.addEventListener('click', () => {
+        if(testAnim === 1){
+            reorganiserImg();
+        }
+    })
+
+
+
+      
 
 
 
 /* .... Fonction au click changer la source de l'image */
 
-
-const carousselLeft = document.getElementById("carousselLeft");
-const carousselRight = document.getElementById("carousselRight");
 
 // carousselLeft.onClick = changeImg;
 
@@ -127,12 +178,6 @@ function changeImg(element){
 
 
 // .... Paramétrer le glissement tactile de l'image vers la gauche
-
-
-const carouselTrackerCtn = document.querySelector('.carouselTrackerCtn')
-const carouselTrackerCtnChilds = carouselTrackerCtn.children
-const carouselSlideToLeft = document.querySelector('.carouselSlideToLeft')
-const carouselTrackerActive = document.querySelector('.carouselTrackerActive')
 
 let xZero
 let xPos

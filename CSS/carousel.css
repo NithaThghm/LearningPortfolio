@@ -55,6 +55,7 @@ h2{
     border-radius: 20px;
     object-fit: cover;
     flex-shrink: 0;
+    transition: transform .5s ease-out;
   }
 
   .carouselSlideToLeft{
@@ -68,25 +69,29 @@ h2{
     justify-content: center;
   }
 
+  .carouselArrowBtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .carouselBtn{
-    position: absolute;
-    height: 70px;
-    width: 70px;
-    top: 45%;
-    transform: translateY(-50%);
+    height: 30px;
+    width: 30px;
+    /* transform: translateY(-50%); */
     background: none;
     border: none;
     cursor: pointer;
   }
 
-  .carouselBtnLeft{
+  /* .carouselBtnLeft{
     transform : translateX(-200%);
-  }
+  } */
 
-  .carouselBtnRight{
+  /* .carouselBtnRight{
     right: 0;
     transform: translateX(200%);
-  }
+  } */
 
   .carouselTracker{
     position: relative;
